@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -9,7 +10,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
+
         viewModel.search(phrase: "graphql") { result in
             switch result {
             case .success(_):
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
     func registerCell() {
         tableView.register(cellType: GenericCell.self)
     }
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -42,5 +44,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let webController = WebController()
+        webController.url = viewModel.getPathUrl(index: indexPath.row)
+        present(webController, animated: true, completion: nil)
     }
 }

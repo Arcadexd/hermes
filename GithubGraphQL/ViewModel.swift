@@ -50,6 +50,11 @@ final class ViewModel {
         return genericCellModel
     }
     
+    func getPathUrl(index: Int) -> String {
+        let repo = repositorySearchResult?.repos[index]
+        return repo?.url ?? ""
+    }
+    
     func numberOfRows() -> Int {
         return repositorySearchResult?.repos.count ?? 0
     }
