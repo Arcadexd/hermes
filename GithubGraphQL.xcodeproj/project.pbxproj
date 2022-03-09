@@ -15,6 +15,7 @@
 		96CA32A227D8333B0033DCD5 /* GenericCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA32A127D8333B0033DCD5 /* GenericCellViewModel.swift */; };
 		96CA32A527D833B40033DCD5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA32A427D833B40033DCD5 /* StackView.swift */; };
 		96CA32A727D834160033DCD5 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA32A627D834160033DCD5 /* UIFont.swift */; };
+		96CA32A927D83B490033DCD5 /* GenericCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CA32A827D83B490033DCD5 /* GenericCellModel.swift */; };
 		D806B6B527C71F1C006F594D /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = D806B6B427C71F1C006F594D /* Apollo */; };
 		D806B6B727C71F1C006F594D /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = D806B6B627C71F1C006F594D /* ApolloSQLite */; };
 		D84E7B1127C81B88000DEB5B /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84E7B1027C81B88000DEB5B /* MockData.swift */; };
@@ -62,6 +63,7 @@
 		96CA32A127D8333B0033DCD5 /* GenericCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellViewModel.swift; sourceTree = "<group>"; };
 		96CA32A427D833B40033DCD5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		96CA32A627D834160033DCD5 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		96CA32A827D83B490033DCD5 /* GenericCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCellModel.swift; sourceTree = "<group>"; };
 		D84E7B1027C81B88000DEB5B /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		D8F7604A27C724F900B1AB58 /* API+Abstractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Abstractions.swift"; sourceTree = "<group>"; };
 		D8F7604C27C7295500B1AB58 /* GraphQLClient+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GraphQLClient+Search.swift"; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				96CA329F27D833210033DCD5 /* GenericCell.swift */,
+				96CA32A827D83B490033DCD5 /* GenericCellModel.swift */,
 				96CA32A127D8333B0033DCD5 /* GenericCellViewModel.swift */,
 			);
 			path = Components;
@@ -408,6 +411,7 @@
 				96CA32A727D834160033DCD5 /* UIFont.swift in Sources */,
 				D9A10FA0216C4AFD007998EC /* AppDelegate.swift in Sources */,
 				96CA32A027D833210033DCD5 /* GenericCell.swift in Sources */,
+				96CA32A927D83B490033DCD5 /* GenericCellModel.swift in Sources */,
 				96CA32A527D833B40033DCD5 /* StackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

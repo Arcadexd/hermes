@@ -9,7 +9,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        viewModel.search(phrase: "graphql")
+        
+        viewModel.search(phrase: "graphql") { result in
+            switch result {
+            case .success(_):
+                self.tableView.reloadData()
+            case .failure(_):
+                break
+            }
+        }
     }
     
     func setupTableView() {
@@ -25,11 +33,14 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withCellType: GenericCell.self, forIndexPath: indexPath)
-        cell.viewModel = GenericCellViewModel()
+        
+        let cellModel = viewModel.getGenericCellModel(index: indexPath.row)
+        cell.viewModel = GenericCellViewModel(model: cellModel)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfRows()
     }
 }
