@@ -15,7 +15,7 @@ class GenericCellViewModel {
     private(set) var subtitle: String?
     private(set) var content: String?
     private(set) var imageUrl: String?
-    private(set) var value: Int?
+    private(set) var value: String?
     
     init(model: GenericCellModel?) {
         self.model = model
@@ -27,6 +27,6 @@ class GenericCellViewModel {
         subtitle = model.subTitle
         content = model.content
         imageUrl = model.imageUrl
-        value = model.value
+        value = String(model.value)
     }
 }

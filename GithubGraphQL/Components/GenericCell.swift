@@ -27,6 +27,18 @@ class GenericCell: UITableViewCell, ClassIdentifiable {
     }
     
     // UI Elements
+    private lazy var profileImage: UIImageView = {
+        let image = UIImageView()
+        image.heightTo(60).widthTo(60)
+        return image
+    }()
+    
+    private lazy var valueCountImage: UIImageView = {
+        let image = UIImageView()
+        image.heightTo(20).widthTo(20)
+        return image
+    }()
+    
     private lazy var title: UILabel = {
         let lbl = UILabel()
         lbl.textAlignment = .left
@@ -43,6 +55,16 @@ class GenericCell: UITableViewCell, ClassIdentifiable {
         lbl.numberOfLines = 5
         lbl.lineBreakMode = .byWordWrapping
         lbl.font = UIFont.regular(ofSize: 20)
+        
+        return lbl
+    }()
+    
+    private lazy var value: UILabel = {
+        let lbl = UILabel()
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 5
+        lbl.lineBreakMode = .byWordWrapping
+        lbl.font = UIFont.regular(ofSize: 10)
         
         return lbl
     }()
@@ -67,9 +89,17 @@ class GenericCell: UITableViewCell, ClassIdentifiable {
     private func setupData() {
         title.text = unwrappedViewModel.title
         subTitle.text = unwrappedViewModel.subtitle
+        value.text = unwrappedViewModel.value
+        
+        profileImage.loadImageUsingCache(withUrl: unwrappedViewModel.imageUrl ?? "")
+        
+        valueCountImage.image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
+        valueCountImage.tintColor = .green
     }
     
     private func setupUI() {
+        accessoryType = .disclosureIndicator
+        selectionStyle = .none
         setupStackViewsForData()
         setupContentStackView()
         
@@ -77,8 +107,11 @@ class GenericCell: UITableViewCell, ClassIdentifiable {
     }
     
     func setupStackViewsForData() {
-        let infoStackView = StackView.setupStackView(arrangedSubviews: [title, subTitle], axis: .vertical, alignment: .leading, distribution: .fill)
-        contentStackView.addArrangedSubview(infoStackView)
+        let countValueStackView = StackView.setupStackView(arrangedSubviews: [valueCountImage, value], axis: .vertical, alignment: .center)
+        let leadingStackView = StackView.setupStackView(arrangedSubviews: [countValueStackView], axis: .horizontal, alignment: .trailing)
+        let infoStackView = StackView.setupStackView(arrangedSubviews: [title, subTitle], axis: .vertical, alignment: .leading)
+        let imageAndInfoStackView = StackView.setupStackView(arrangedSubviews: [profileImage, infoStackView, leadingStackView], alignment: .center, spacing: 8)
+        contentStackView.addArrangedSubview(imageAndInfoStackView)
     }
     
     private func setupContentStackView() {
