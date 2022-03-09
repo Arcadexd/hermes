@@ -11,14 +11,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
 
-        viewModel.search(phrase: "graphql") { result in
-            switch result {
-            case .success(_):
-                self.tableView.reloadData()
-            case .failure(_):
-                break
-            }
-        }
+        fetchSearch(pagination: false)
     }
     
     func setupTableView() {
@@ -30,6 +23,20 @@ class ViewController: UIViewController {
         tableView.register(cellType: GenericCell.self)
     }
     
+    func fetchSearch(pagination: Bool) {
+        let filter = SearchRepositoriesQuery.Filter.before(nil)
+        
+        viewModel.search(phrase: "graphql", filter: pagination ? filter : nil) { [weak self] result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -50,5 +57,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let webController = WebController()
         webController.url = viewModel.getPathUrl(index: indexPath.row)
         present(webController, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row == viewModel.numberOfRows() - 1 {
+//            fetchSearch(pagination: true)
+//        }
+//        print(indexPath.row)
     }
 }

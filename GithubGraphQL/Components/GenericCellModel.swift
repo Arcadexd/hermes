@@ -14,12 +14,4 @@ struct GenericCellModel {
     var content: String?
     var imageUrl: String?
     var value: Int = 0
-    
-//    init(title: String?, subTitle: String?, content: String?, imageUrl: String?, value: Int) {
-//        self.title = title
-//        self.subTitle = subTitle
-//        self.content = content
-//        self.imageUrl = imageUrl
-//        self.value = value
-//    }
 }

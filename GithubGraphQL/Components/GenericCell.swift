@@ -108,9 +108,9 @@ class GenericCell: UITableViewCell, ClassIdentifiable {
     
     func setupStackViewsForData() {
         let countValueStackView = StackView.setupStackView(arrangedSubviews: [valueCountImage, value], axis: .vertical, alignment: .center)
-        let leadingStackView = StackView.setupStackView(arrangedSubviews: [countValueStackView], axis: .horizontal, alignment: .trailing)
+        let trailingStackView = StackView.setupStackView(arrangedSubviews: [countValueStackView], axis: .horizontal, alignment: .trailing)
         let infoStackView = StackView.setupStackView(arrangedSubviews: [title, subTitle], axis: .vertical, alignment: .leading)
-        let imageAndInfoStackView = StackView.setupStackView(arrangedSubviews: [profileImage, infoStackView, leadingStackView], alignment: .center, spacing: 8)
+        let imageAndInfoStackView = StackView.setupStackView(arrangedSubviews: [profileImage, infoStackView, trailingStackView], alignment: .center, spacing: 8)
         contentStackView.addArrangedSubview(imageAndInfoStackView)
     }
     
