@@ -2,7 +2,7 @@ import Apollo
 import ApolloSQLite
 import Foundation
 
-private let kGitHubBearerToken = "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"
+private let kGitHubBearerToken = ""
 private let kGitHubURLPath = "https://api.github.com/graphql"
 
 
